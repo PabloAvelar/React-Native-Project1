@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         borderBottomEndRadius: 10,
         borderBottomStartRadius: 10,
         width: '100%',
-        height: '40%',
+        height: '45%',
         alignItems: 'center',
         justifyContent: 'center',
     },
