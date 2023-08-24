@@ -24,7 +24,7 @@ export default class Inicio extends Component {
   render() {
     return (
       <View style={styles.root}>
-        <View style={styles.container}>
+        <View style={[styles.container, styles.shadow]}>
             <Image
                 style={styles.logo}
                 source={require('../images/inge.png')}
@@ -33,20 +33,20 @@ export default class Inicio extends Component {
             <Text style={styles.txtTitle}>Welcome to the HandyMan!</Text>
 
                 <View style={styles.buttons}>
-                  <View style={[styles.btn, styles.facebook]}>
+                  <View style={[styles.btn, styles.shadow, styles.facebook]}>
                     <Image
                       style={styles.icon}
                       source={require('../images/icon_fb.png')}
                     />
-                    <Text style={[styles.box, {color: color_txt}]}>Sign in with Facebook</Text>
+                    <Text style={[styles.box, {color: color_txt}]}>Log in with Facebook</Text>
                   </View>
 
-                  <View style={[styles.btn, styles.email]}>
+                  <View style={[styles.btn, styles.shadow, styles.email]}>
                     <Image
                       style={styles.icon}
                       source={require('../images/icon_email.png')}
                     />
-                    <Text style={[styles.box, {color: color_txt}]}>Sign in with Email</Text>
+                    <Text style={[styles.box, {color: color_txt}]}>Log in with Email</Text>
                   </View>
                   <View>
                     <Text>Don't have an account? <Text style={[styles.hyperlink, {color: color_borders, textDecorationLine: 'underline'}]}>Sign up</Text> </Text>
@@ -63,9 +63,17 @@ export default class Inicio extends Component {
 const styles = StyleSheet.create({
     root:{
         height: '100%',
-        backgroundColor: color_borders,
+        backgroundColor: "#fff",
         alignItems: 'center',
         justifyContent: 'center',
+    },
+
+    shadow:{
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height:4},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+        elevation: 5,
     },
 
     container:{
@@ -75,7 +83,7 @@ const styles = StyleSheet.create({
         borderRadius: 12,
         alignItems: 'center',
         justifyContent: 'space-between',
-        borderColor: color_borders,
+        // borderColor: color_borders,
     },
 
     logo:{
@@ -100,6 +108,7 @@ const styles = StyleSheet.create({
         height: '45%',
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
 
     txtTitle:{
@@ -122,7 +131,7 @@ const styles = StyleSheet.create({
       borderRadius: 30,
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'flex-start'
+      justifyContent: 'flex-start',
     },
 
     facebook:{
