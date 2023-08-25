@@ -3,7 +3,7 @@
 // Paleta de color que estoy usando: https://paletadecolores.com.mx/paleta/f8a834/e19527/ca821a/b46f0d/9d5c00/
 
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, TouchableHighlight } from 'react-native';
 
 const bg_root = "#fbc77d";
 const bg_mainFrame = "#fff";
@@ -22,6 +22,14 @@ export default class Inicio extends Component {
 
   
   render() {
+    const facebook = () => {
+      console.log('Iniciar sesión con facebook');
+    }
+
+    const email = () => {
+      console.log('Iniciar sesión con email');
+    }
+
     return (
       <View style={styles.root}>
         <View style={[styles.container, styles.shadow]}>
@@ -30,9 +38,10 @@ export default class Inicio extends Component {
                 source={require('../images/inge.png')}
             />
             <View style={styles.login}>
-            <Text style={styles.txtTitle}>Welcome to the HandyMan!</Text>
-
+            <Text style={styles.txtTitle}>Welcome to the HandyMan</Text>
                 <View style={styles.buttons}>
+
+                <TouchableOpacity style={styles.clickable_btn} onPress={facebook} >
                   <View style={[styles.btn, styles.shadow, styles.facebook]}>
                     <Image
                       style={styles.icon}
@@ -41,13 +50,17 @@ export default class Inicio extends Component {
                     <Text style={[styles.box, {color: color_txt}]}>Log in with Facebook</Text>
                   </View>
 
-                  <View style={[styles.btn, styles.shadow, styles.email]}>
-                    <Image
-                      style={styles.icon}
-                      source={require('../images/icon_email.png')}
-                    />
-                    <Text style={[styles.box, {color: color_txt}]}>Log in with Email</Text>
-                  </View>
+                </TouchableOpacity>
+                  
+                  <TouchableOpacity style={styles.clickable_btn} onPress={email}>
+                    <View style={[styles.btn, styles.shadow, styles.email]}>
+                      <Image
+                        style={styles.icon}
+                        source={require('../images/icon_email.png')}
+                      />
+                      <Text style={[styles.box, {color: color_txt}]}>Log in with Email</Text>
+                    </View>
+                  </TouchableOpacity>
                   <View>
                     <Text>Don't have an account? <Text style={[styles.hyperlink, {color: color_borders, textDecorationLine: 'underline'}]}>Sign up</Text> </Text>
                   </View>
@@ -61,6 +74,12 @@ export default class Inicio extends Component {
 }
 
 const styles = StyleSheet.create({
+    clickable_btn:{
+      width: 275,
+      height: 60,
+      alignItems: 'center',
+    },
+
     root:{
         height: '100%',
         backgroundColor: "#fff",
