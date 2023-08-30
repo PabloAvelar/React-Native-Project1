@@ -67,5 +67,17 @@ yarn-error.log
 
 # More files ajajaja
 README.md
+/__tests__
 /android
 /ios
+/.bundle
+/.vscode
+/.eslintrc.js
+.prettierrc.js
+.watchmanconfig
+app.json
+babel.config.js
+Gemfile
+index.js
+jest.config.js
+metro.config.js
