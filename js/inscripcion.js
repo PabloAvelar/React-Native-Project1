@@ -52,24 +52,25 @@ render() {
             <View style={styles.footer}>
                 <Text style={{color: '#000'}}>Already have an account? <Text style={{color: "#955903", textDecorationLine: 'underline'}}>Log in</Text></Text>
             </View>
-
-            <Modal transparent={true} visible={this.state.modal_window} animationType="fade">
-                <View style={styles.modal}>
-                    <Text style={styles.input_label}>Name</Text>
-                    <TextInput/>
-
-                    <Text style={styles.input_label}>Email</Text>
-                    <TextInput/>
-
-                    <Text style={styles.input_label}>Password</Text>
-                    <TextInput/>
-
-                    <TouchableOpacity style={styles.create_account} onPress={closeModal}>
-                        <Text style={styles.btn}>Aceptar</Text>
-                    </TouchableOpacity>
-                </View>
-            </Modal>
         </View>
+
+        <Modal transparent={false} visible={this.state.modal_window} animationType="fade">
+            <View style={[styles.modal, styles.shadow]}>
+                <View style={styles.form}>
+                    <TextInput placeholder='Name' style={styles.textfield}/>
+
+                    <TextInput placeholder='Email' style={styles.textfield}/>
+
+                    <TextInput placeholder='Password' style={styles.textfield}/>
+
+                </View>
+
+                <TouchableOpacity style={[styles.btn, styles.create_btn, styles.shadow]} onPress={closeModal}>
+                    <Text>Create</Text>
+                </TouchableOpacity>
+            </View>
+        </Modal>
+
     </View>
     );
   }
@@ -77,14 +78,35 @@ render() {
 const bg_root = '#faac3c';
 
 const styles = StyleSheet.create({
-    modal:{
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        marginTop: 20,
+    textfield:{
+        borderBottomWidth: 2,
     },
 
-    input_label:{
-        color: '#000',
+    form:{
+        width: '80%',
+        height: '60%',
+        justifyContent: 'space-between'
+    },
+
+    modal:{
+        backgroundColor: "#333",
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        width: '90%',
+        height: "50%",
+
+        marginVertical: '50%',
+        marginHorizontal: '5%',
+        borderRadius: 13,
+    },
+
+    create_btn:{
+        color: '#ddd',
+        width: 210,
+        height: 50,
+        fontSize: 20,
+        backgroundColor: '#202020',
+        justifyContent: 'center',
     },
 
     root:{
@@ -92,7 +114,6 @@ const styles = StyleSheet.create({
         height: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        
     },
 
     container:{
