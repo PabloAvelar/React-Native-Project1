@@ -5,14 +5,6 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, TouchableHighlight } from 'react-native';
 
-const bg_root = "#fbc77d";
-const bg_mainFrame = "#fff";
-const bg_login = '#faac3c';
-const color_txt = '#fff';
-const bg_fb = '#3b5998';
-const bg_email = '#333';
-const color_borders = '#955903';
-
 export default class Inicio extends Component {
   constructor(props) {
     super(props);
@@ -72,6 +64,14 @@ export default class Inicio extends Component {
     );
   }
 }
+
+const bg_root = "#fbc77d";
+const bg_mainFrame = "#fff";
+const bg_login = '#faac3c';
+const color_txt = '#fff';
+const bg_fb = '#3b5998';
+const bg_email = '#333';
+const color_borders = '#955903';
 
 const styles = StyleSheet.create({
     clickable_btn:{
