@@ -12,6 +12,7 @@ export default class Inscripcion extends Component {
 render() {
     const bg_fb = '#3b5998';
     const bg_email = '#333';
+    const ph_color = "DDD"
 
     const facebook = () =>{
         this.setState({modal_window:true});
@@ -23,6 +24,11 @@ render() {
     const closeModal = () => {
         this.setState({modal_window:false});
     }
+
+    const toLogIn = () =>{
+        this.props.navigation.navigate('Inicio');
+    }
+
     return (
     <View style={styles.root}>
         <View style={[styles.container, styles.shadow]}>
@@ -32,40 +38,41 @@ render() {
             </View>
 
             <View style={styles.buttons_area}>
-                <TouchableOpacity style={[styles.btn, styles.shadow, {backgroundColor: bg_fb}]}>
+                <TouchableOpacity onPress={facebook} style={[styles.btn, styles.shadow, {backgroundColor: bg_fb}]}>
                     <Image
                         style={styles.icon}
                         source={require('../images/icon_fb.png')}
                       />
-                    <Text onPress={facebook} style={{color: '#fff'}}>Continue with Facebook</Text>
+                    <Text style={{color: '#fff'}}>Continue with Facebook</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.btn, styles.shadow, {backgroundColor: bg_email}]} >
+                <TouchableOpacity onPress={email} style={[styles.btn, styles.shadow, {backgroundColor: bg_email}]} >
                     <Image
                         style={styles.icon}
                         source={require('../images/icon_email.png')}
                       />
-                    <Text onPress={email} style={{color: '#fff'}}>Continue with Email</Text>
+                    <Text style={{color: '#fff'}}>Continue with Email</Text>
                 </TouchableOpacity>
             </View>
-
-            <View style={styles.footer}>
-                <Text style={{color: '#000'}}>Already have an account? <Text style={{color: "#955903", textDecorationLine: 'underline'}}>Log in</Text></Text>
-            </View>
+            <TouchableOpacity onPress={toLogIn}>
+                <View style={styles.footer}>
+                    <Text style={{color: '#000'}}>Already have an account? <Text style={{color: "#955903", textDecorationLine: 'underline'}}>Log in</Text></Text>
+                </View>
+            </TouchableOpacity>
         </View>
 
         <Modal transparent={false} visible={this.state.modal_window} animationType="fade">
             <View style={[styles.modal, styles.shadow]}>
                 <View style={styles.form}>
-                    <TextInput placeholder='Name' style={styles.textfield}/>
+                    <TextInput placeholder='Name' placeholderTextColor={'white'} style={styles.textfield}/>
 
-                    <TextInput placeholder='Email' style={styles.textfield}/>
+                    <TextInput placeholder='Email' placeholderTextColor={'white'} style={styles.textfield}/>
 
-                    <TextInput placeholder='Password' style={styles.textfield}/>
+                    <TextInput placeholder='Password' placeholderTextColor={'white'} style={styles.textfield}/>
 
                 </View>
 
-                <TouchableOpacity style={[styles.btn, styles.create_btn, styles.shadow]} onPress={closeModal}>
+                <TouchableOpacity style={[styles.btn, styles.create_btn, styles.shadow, {color: 'white'}]} onPress={closeModal}>
                     <Text>Create</Text>
                 </TouchableOpacity>
             </View>

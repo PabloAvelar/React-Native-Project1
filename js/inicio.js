@@ -22,6 +22,10 @@ export default class Inicio extends Component {
       console.log('Iniciar sesión con email');
     }
 
+    const toSignUp = () =>{
+      this.props.navigation.navigate('Inscripcion');
+    }
+
     return (
       <View style={styles.root}>
         <View style={[styles.container, styles.shadow]}>
@@ -54,7 +58,9 @@ export default class Inicio extends Component {
                     </View>
                   </TouchableOpacity>
                   <View>
-                    <Text>Don't have an account? <Text style={[styles.hyperlink, {color: color_borders, textDecorationLine: 'underline'}]}>Sign up</Text> </Text>
+                    <TouchableOpacity onPress={toSignUp}>
+                      <Text>Don't have an account? <Text style={[styles.hyperlink, {color: color_borders, textDecorationLine: 'underline'}]}>Sign up</Text> </Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
 
