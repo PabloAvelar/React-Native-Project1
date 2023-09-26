@@ -15,7 +15,6 @@ export default class Inscripcion extends Component {
     render() {
         const bg_fb = '#3b5998';
         const bg_email = '#333';
-        const ph_color = "DDD"
 
         const facebook = () => {
             this.setState({ modal_window: true });
@@ -45,9 +44,9 @@ export default class Inscripcion extends Component {
             xhttp.send();
 
             // Regresando los valores a su estado original 
-            this.state.modal_window = false;
-            this.state.email = ''
-            this.state.password = ''
+            // this.state.modal_window = false;
+            // this.state.email = ''
+            // this.state.password = ''
 
             this.setState({ modal_window: false });
         }

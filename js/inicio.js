@@ -16,6 +16,7 @@ export default class Inicio extends Component {
   }
 
   render() {
+    let move_to_menu = false;
     const facebook = () => {
       console.log('Iniciar sesión con facebook');
       this.setState({ modal_window: true });
@@ -36,6 +37,8 @@ export default class Inicio extends Component {
         return
       }
 
+      // Copiando la referencia del constructor para poder usarlo dentro de un callback
+      const _this = this;
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -45,31 +48,30 @@ export default class Inicio extends Component {
             Alert.alert(
               'Ha ocurrido un error :(',
               'La contraseña es incorrecta. Intenta de nuevo.'
-            );
+              );
+            return; 
           } else if (xhttp.responseText === '3') {
             Alert.alert(
               'Ha ocurrido un error :(',
               'Cuenta no existente. ¡Crea una cuenta con nosotros!'
-            );
+              );
+              return; 
+            }else{
+              // Con la referencia del constructor copiada
+              _this.props.navigation.navigate('Menu', {name: xhttp.responseText, email: _this.state.email, password: _this.state.password});
+            }
           }
-        }
-      };
+        };
+        
+        // Verificando desde la base de datos
+        xhttp.open("GET", `https://avelararmenta.000webhostapp.com/verifica.php?correo=${this.state.email}&contraseña=${this.state.password}`, true);
+        xhttp.send();
 
-      // Verificando desde la base de datos
-      xhttp.open("GET", `https://avelararmenta.000webhostapp.com/verifica.php?correo=${this.state.email}&contraseña=${this.state.password}`, true);
-      xhttp.send();
-
-      // Regresando los valores a su estado original 
-      this.state.modal_window = false;
-      this.state.email = ''
-      this.state.password = ''
-
-      this.setState({ modal_window: false });
-
-    }
-
-    return (
-      <View style={styles.root}>
+        this.setState({ modal_window: false }); 
+      }
+      
+      return (
+        <View style={styles.root}>
         <View style={[styles.container, styles.shadow]}>
           <Image
             style={styles.logo}
