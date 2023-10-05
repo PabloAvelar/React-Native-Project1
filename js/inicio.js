@@ -113,7 +113,7 @@ export default class Inicio extends Component {
         <Modal transparent={false} visible={this.state.modal_window} animationType='fade'>
           <View style={[styles.modal, styles.shadow]}>
             <TouchableOpacity style={styles.ExitModal} onPress={() => {
-              console.log('Cerando modal: X');
+              console.log('Cerrando modal: X');
               this.setState({ modal_window: false });
             }}>
               <Text style={{ color: "white", fontSize: 20 }}>x</Text>

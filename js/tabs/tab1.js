@@ -1,15 +1,32 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, DrawerLayoutAndroid } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, DrawerLayoutAndroid, FlatList } from 'react-native';
 
 export default class Tab1 extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            dataSource: [],
+        };
     }
 
     openDrawer = () => {
         this.drawer.openDrawer();
     };
+
+    componentDidMount() {
+        var xhttp = new XMLHttpRequest();
+        _this = this;
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Typical action to be performed when the document is ready:
+                console.log(xhttp.responseText);
+                let temp = JSON.parse(xhttp.responseText);
+                _this.setState({ dataSource: temp });
+            }
+        };
+        xhttp.open("GET", "https://dcc2.000webhostapp.com/2023B/datos.json", true);
+        xhttp.send();
+    }
 
     render() {
         const navigationView = (
@@ -22,7 +39,7 @@ export default class Tab1 extends Component {
                     </TouchableOpacity>
 
                     <TouchableOpacity>
-                        <Text style={styles.drawerOptions} onPress={()=>this.props.navigation.navigate('Inicio')}>Log out</Text>
+                        <Text style={styles.drawerOptions} onPress={() => this.props.navigation.navigate('Inicio')}>Log out</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -66,7 +83,33 @@ export default class Tab1 extends Component {
                     </View>
 
                     <View style={styles.body}>
-                        <View style={styles.container}></View>
+                        <View style={styles.container}>
+                            <Text style={{ color: 'black', fontSize: 25 }}>Trabajadores</Text>
+                            <FlatList
+                                data={this.state.dataSource}
+                                renderItem={({ item }) =>
+
+                                    <View style={{ width: 400, heigth: 80 }}>
+                                        <Text style={{ color: 'black', marginLeft: 50 }}>{item.Nombre} </Text>
+                                        <Text style={{ color: 'black', marginLeft: 50 }}>{item.Profesion} </Text>
+                                        <Text style={{ color: 'black', marginLeft: 50 }}>{item.Telefono} </Text>
+                                        <Image
+                                            source={{ uri: item.Imagen }}
+                                            style={{ width: 100, height: 100, marginLeft: 50 }}
+                                        />
+                                        <View style={{
+                                            width: 300,
+                                            height: 6,
+                                            backgroundColor: 'black',
+                                            marginLeft: 50,
+                                            marginTop: 10,
+                                        }}>
+                                        </View>
+                                    </View>
+
+                                }
+                            />
+                        </View>
                     </View>
                 </View>
             </DrawerLayoutAndroid>
@@ -126,7 +169,8 @@ const styles = StyleSheet.create({
         // backgroundColor: 'green',
         marginTop: '10%',
         width: '90%',
-        height: '90%'
+        height: '90%',
+        alignItems: 'center'
     }
 
 

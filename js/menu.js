@@ -18,24 +18,25 @@ export default class Menu extends Component {
         <Tab.Screen
           name="Tilines"
           component={Tab1}
-          initialParams={{name: this.props.route.params.name}}
+          initialParams={{ name: this.props.route.params.name }}
           options={{
             tabBarLabel: 'Tilines',
-            tabBarIcon: ({color, size}) =>{
-              <Icon name='eye-outline' color={'orange'} size={40}/>
+            tabBarIcon: ({ color, size }) => {
+              <Icon name='eye-outline' color={'orange'} size={40} />
             }
           }}
-          />
+        />
+        
         <Tab.Screen
           name="Informacion"
           component={Tab2}
           options={{
             tabBarLabel: 'Tilines',
-            tabBarIcon: ({color, size}) =>{
-              <Icon name='logo-twitch' color={'orange'} size={40}/>
+            tabBarIcon: ({ color, size }) => {
+              <Icon name='logo-twitch' color={'orange'} size={40} />
             }
           }}
-        
+
         />
       </Tab.Navigator>
     );
