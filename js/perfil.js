@@ -1,32 +1,16 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, DrawerLayoutAndroid, FlatList } from 'react-native';
+import { View, Text, StyleSheet, DrawerLayoutAndroid, TouchableOpacity, Image } from 'react-native';
 
-export default class Tab1 extends Component {
+export default class Perfil extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataSource: [],
         };
     }
 
     openDrawer = () => {
         this.drawer.openDrawer();
     };
-
-    componentDidMount() {
-        var xhttp = new XMLHttpRequest();
-        _this = this;
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // Typical action to be performed when the document is ready:
-                console.log(xhttp.responseText);
-                let temp = JSON.parse(xhttp.responseText);
-                _this.setState({ dataSource: temp });
-            }
-        };
-        xhttp.open("GET", "https://dcc2.000webhostapp.com/2023B/datos.json", true);
-        xhttp.send();
-    }
 
     render() {
         const navigationView = (
@@ -59,7 +43,7 @@ export default class Tab1 extends Component {
                             <TouchableOpacity onPress={this.openDrawer}>
                                 <Image
                                     style={{ width: 30, height: 30 }}
-                                    source={require('../../images/drawermenu.png')}
+                                    source={require('../images/drawermenu.png')}
                                 />
                             </TouchableOpacity>
                         </View>
@@ -67,7 +51,7 @@ export default class Tab1 extends Component {
                         <View style={styles.profileInMenu}>
                             <Image
                                 style={{ width: 30, height: 30 }}
-                                source={require('../../images/user.png')}
+                                source={require('../images/user.png')}
                             />
                             <Text style={{ color: '#f1f1f1', fontSize: 16 }}>
                                 {this.props.route.params.name}
@@ -77,44 +61,33 @@ export default class Tab1 extends Component {
                         <View style={styles.cart}>
                             <Image
                                 style={{ width: 30, height: 30 }}
-                                source={require('../../images/cart.png')}
+                                source={require('../images/cart.png')}
                             />
                         </View>
                     </View>
 
                     <View style={styles.body}>
                         <View style={styles.container}>
-                            <Text style={{ color: 'black', fontSize: 20, padding: 10 }}>Trabajadores</Text>
-                            <FlatList
-                                data={this.state.dataSource}
-                                renderItem={({ item }) =>
+                            <Text style={{ color: 'black', fontSize: 20, padding: 10 }}>Información del trabajador</Text>
 
-                                    <TouchableOpacity onPress={() => {
-                                        console.log("Perfil: " + item.id);
-                                        // Cambiando de pantalla a ./perfil.js
-                                        this.props.navigation.navigate('Perfil', {profile:item, name:this.props.route.params.name});
-                                    }}>
-                                        <View style={{ width: 400, heigth: 80, padding: 10, backgroundColor: 'white' }}>
-                                            <Text style={{ color: 'black' }}>{item.Nombre} </Text>
-                                            <Text style={{ color: 'black' }}>{item.Profesion} </Text>
-                                            <Text style={{ color: 'black' }}>{item.Telefono} </Text>
+                            <View style={{ width: 400, heigth: 80, padding: 10, backgroundColor: 'white' }}>
+                                <Text style={{ color: 'black' }}>{this.props.route.params.profile.Nombre} </Text>
+                                <Text style={{ color: 'black' }}>{this.props.route.params.profile.Profesion} </Text>
+                                <Text style={{ color: 'black' }}>{this.props.route.params.profile.Telefono} </Text>
 
-                                            <Image
-                                                source={{ uri: item.Imagen }}
-                                                style={{ width: 100, height: 100 }}
-                                            />
-                                            <View style={{
-                                                width: 300,
-                                                height: 6,
-                                                backgroundColor: 'black',
-                                                marginTop: 10,
-                                            }}>
-                                            </View>
-                                        </View>
-                                    </TouchableOpacity>
-                                }
-                                keyExtractor={item => item.id}
-                            />
+                                <Image
+                                    source={{ uri: this.props.route.params.profile.Imagen }}
+                                    style={{ width: 100, height: 100 }}
+                                />
+                                <View style={{
+                                    width: 300,
+                                    height: 6,
+                                    backgroundColor: 'black',
+                                    marginTop: 10,
+                                }}>
+                                </View>
+                            </View>
+
                         </View>
                     </View>
                 </View>

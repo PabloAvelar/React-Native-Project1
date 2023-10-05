@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Inicio from './inicio';
 import Inscripcion from './inscripcion';
 import Menu from './menu';
+import Perfil from './perfil';
 // import DrawerNavigator from './drawer';
 
 export default class Navegacion extends Component {
@@ -23,6 +24,7 @@ export default class Navegacion extends Component {
             <Stack.Screen name="Inicio" component={Inicio} options={{headerShown:false}}/>
             <Stack.Screen name="Inscripcion" component={Inscripcion} options={{headerShown:false}}/>
             <Stack.Screen name="Menu" component={Menu} options={{headerShown:false}}/>
+            <Stack.Screen name="Perfil" component={Perfil} options={{headerShown:false}}/>
         </Stack.Navigator>
     </NavigationContainer>
     );

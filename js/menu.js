@@ -20,6 +20,7 @@ export default class Menu extends Component {
           component={Tab1}
           initialParams={{ name: this.props.route.params.name }}
           options={{
+            headerShown:false,
             tabBarLabel: 'Tilines',
             tabBarIcon: ({ color, size }) => {
               <Icon name='eye-outline' color={'orange'} size={40} />
@@ -31,6 +32,7 @@ export default class Menu extends Component {
           name="Informacion"
           component={Tab2}
           options={{
+            headerShown:false,
             tabBarLabel: 'Tilines',
             tabBarIcon: ({ color, size }) => {
               <Icon name='logo-twitch' color={'orange'} size={40} />
