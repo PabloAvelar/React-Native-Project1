@@ -14,28 +14,30 @@ export default class Menu extends Component {
     const Tab = createBottomTabNavigator();
 
     return (
-      <Tab.Navigator initialRouteName='Tilines'>
+      <Tab.Navigator initialRouteName='Constructores'>
         <Tab.Screen
-          name="Tilines"
+          name="Constructores"
           component={Tab1}
           initialParams={{ name: this.props.route.params.name }}
           options={{
-            headerShown:false,
-            tabBarLabel: 'Tilines',
-            tabBarIcon: ({ color, size }) => {
-              <Icon name='eye-outline' color={'orange'} size={40} />
+            headerShown: false,
+            tabBarLabel: 'Constructores',
+            tabBarIcon: ({ color, size }) =>{
+                return <Icon name='eye-outline' color={'orange'} size={40} />
+
             }
           }}
         />
-        
+
         <Tab.Screen
           name="Informacion"
           component={Tab2}
+          initialParams={{ name: this.props.route.params.name }}
           options={{
-            headerShown:false,
-            tabBarLabel: 'Tilines',
+            headerShown: false,
+            tabBarLabel: 'Información',
             tabBarIcon: ({ color, size }) => {
-              <Icon name='logo-twitch' color={'orange'} size={40} />
+                return <Icon name='logo-twitch' color={'orange'} size={40} />
             }
           }}
 

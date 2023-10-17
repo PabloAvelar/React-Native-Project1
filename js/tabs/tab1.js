@@ -13,6 +13,10 @@ export default class Tab1 extends Component {
         this.drawer.openDrawer();
     };
 
+    closeDrawer = () => {
+        this.drawer.closeDrawer();
+    }
+
     componentDidMount() {
         var xhttp = new XMLHttpRequest();
         _this = this;
@@ -42,7 +46,6 @@ export default class Tab1 extends Component {
                         <Text style={styles.drawerOptions} onPress={() => this.props.navigation.navigate('Inicio')}>Log out</Text>
                     </TouchableOpacity>
                 </View>
-
             </View>
         );
 
@@ -53,6 +56,7 @@ export default class Tab1 extends Component {
                 drawerPosition={'left'}
                 renderNavigationView={() => navigationView}
             >
+                
                 <View style={styles.root}>
                     <View style={styles.header}>
                         <View style={styles.drawerMenu}>
@@ -92,7 +96,7 @@ export default class Tab1 extends Component {
                                     <TouchableOpacity onPress={() => {
                                         console.log("Perfil: " + item.id);
                                         // Cambiando de pantalla a ./perfil.js
-                                        this.props.navigation.navigate('Perfil', {profile:item, name:this.props.route.params.name});
+                                        this.props.navigation.navigate('Perfil', { profile: item, name: this.props.route.params.name });
                                     }}>
                                         <View style={{ width: 400, heigth: 80, padding: 10, backgroundColor: 'white' }}>
                                             <Text style={{ color: 'black' }}>{item.Nombre} </Text>
